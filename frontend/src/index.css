@@ -11,3 +11,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.map-container {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.custom-marker {
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  border: solid;
+  border-color: black;
+  border-width: 2px;
+  opacity: 0.8;
+}
