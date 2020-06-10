@@ -1,0 +1,9 @@
+export let pointArray = [];
+export let max_i = pointArray.length();
+export let ost = [];
+export let pro = [];
+export let pro1 = [];
+export let index = 0;
+export let posl = [[]];
+export const param_prognoz = 2200;
+export let v = [[]];
