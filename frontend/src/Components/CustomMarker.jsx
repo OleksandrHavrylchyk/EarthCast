@@ -45,9 +45,18 @@ export default class CustomMarker extends React.Component {
     // what do you expect to get back with the event
     eventParameters = (event) => ({
         event,
-        anchor: this.props.anchor,
+        latitude: this.props.anchor[0],
+        longitude: this.props.anchor[1],
+        magnitude: this.props.magnitude,
+        depth: this.props.depth,
         payload: this.props.payload
     })
+
+    updateState = () => {
+      this.setState({
+        isPointSelected: false
+      })
+    }
 
     // delegators
 
@@ -133,7 +142,7 @@ export default class CustomMarker extends React.Component {
 
     return (
       <div style={style}
-           onClick={this.handleClick}
+           onClick={(e) => this.handleClick(e, this.props.magnitude, this.props.depth)}
            onContextMenu={this.handleContextMenu}
            onMouseOver={this.handleMouseOver}
            onMouseOut={this.handleMouseOut}>

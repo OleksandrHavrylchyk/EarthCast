@@ -1,13 +1,11 @@
-import { normalization } from "normalization.js";
-import { pointArray, i_max, ost, pro, index, param_prognoz } from "../Services/constantService.js"
+import { normalization } from "./normalization";
+import { pointArray, i_max, posl, index, param_prognoz, flag_traject } from "../Services/constantService";
+import point_cirkle_optim from "./circle_optim";
 
-function createForecast() {
-    for (let i1 = 0; i1 < 1000; i1++) {
-        for (let j1 = 0; j1 < 1000; j1++) {
-            pro[i1][j1] = 0;
-            pro1[i1][j1]=0;
-        }
-    }
+export function createForecast() {
+    // for (let j1 = 0; j1 < 1000; j1++) {
+    //     pro.push([0, 0]);
+    // }
 
     let i1, i2, i3, i, j, j1;
     for (i = 0; i < index; i++) {
@@ -44,7 +42,7 @@ function forecast(point) {
             }
 
             if (j != i-1) {
-                p = p*normalization(point, pointArray[j])/normalization(pointArray[i-1], mas[j]);
+                p = p*normalization(point, pointArray[j])/normalization(pointArray[i-1], pointArray[j]);
             }
         }
 

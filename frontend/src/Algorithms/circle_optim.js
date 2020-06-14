@@ -1,8 +1,9 @@
-import { pointArray, pro, v } from "../Services/constantService.js"
-import { normalization1, normalization } from "normalization.js";
-import { gauss } from "gauss.js";
+import { pointArray, pro, pro1, rez, t1, t2, v, x_traject, y_traject, flag_traject } from "../Services/constantService";
+import { normalization1 } from "./normalization";
+import getpoint from "./getpoint";
+import { gauss } from "./gauss";
 
-export function point_cirkle_optim (i1, i2, i3, n) {
+export default function point_cirkle_optim (i1, i2, i3, chas) {
     let t3 = chas - pointArray[i3].time;
 
     if (((pointArray[i1].x - pointArray[i2].x) * (pointArray[i3].x - pointArray[i2].x)
@@ -24,7 +25,7 @@ export function point_cirkle_optim (i1, i2, i3, n) {
         a[0][2] = (Math.sqr(normalization1(pointArray[i2], o1)) - Math.sqr(normalization1(pointArray[i3], o1))) / 2.;
         a[1][0] = pointArray[i2].x - pointArray[i1].x;
         a[1][1] = pointArray[i2].y - pointArray[i1].y;
-        a[1][2] = (Math.sqr(normalization1(pointArray[i2], o1)) - sqr(normalization1(pointArray[i1], o1))) / 2.;
+        a[1][2] = (Math.sqr(normalization1(pointArray[i2], o1)) - Math.sqr(normalization1(pointArray[i1], o1))) / 2.;
 
         b = a;
         d = gauss(2, b);
@@ -58,7 +59,7 @@ export function point_cirkle_optim (i1, i2, i3, n) {
         } else {
             znak = -1;
         }
-        // NOTE: Need to implement this method
+
         rez = getpoint(pointArray[i3].x, pointArray[i3].y, centr.x, centr.y, kut, znak);
 
         if ((rez != null) && (rez[0] > 0) && (rez[0] < 1000) && (rez[1] < 1000) && (rez[1] > 0)) {
@@ -91,16 +92,18 @@ export function point_cirkle_optim (i1, i2, i3, n) {
             }
         }
 
-        delete a;
-        delete b;
-        delete d;
+        console.log(rez); 
+
+        a = null;
+        b = null;
+        d = null;
     }
 
     if ((((pointArray[i1].x - pointArray[i2].x) * (pointArray[i3].x - pointArray[i2].x) +
         (pointArray[i3].y - pointArray[i2].y) * (pointArray[i1].y - pointArray[i2].y)) >= 0) && (t3 > 0)) {
         
         // NOTE: Need to check this method in c++
-        let eps = 3 * (random(2) - 0.5);
+        let eps = 3 * (Math.random(2) - 0.5);
         let _x, _y, rob, rob1;
         
         rob1.x = pointArray[i3].x;

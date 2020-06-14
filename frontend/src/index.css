@@ -13,8 +13,20 @@ code {
 }
 
 .map-container {
-  max-width: 80%;
   margin: 0 auto;
+}
+
+.parameters-section {
+  padding-top: 20px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.justify-between {
+  display: flex;
+  justify-content: space-between !important;
 }
 
 .custom-marker {
@@ -25,4 +37,33 @@ code {
   border-color: black;
   border-width: 2px;
   opacity: 0.8;
+}
+
+.side-bar-window {
+  height: 100%;
+  border: solid;
+  border-color: lightgray;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.window-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.fetch-window-title, .close-x {
+  color: darkgray;
+  height: 30px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.close-x {
+  color: darkgray;
+  border: solid;
+  border-color: darkgray;
+  border-radius: 5px;
+  width: 30px;
+  cursor: pointer;
 }
